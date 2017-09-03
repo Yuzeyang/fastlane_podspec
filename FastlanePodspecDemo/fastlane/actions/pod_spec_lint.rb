@@ -4,26 +4,14 @@ module Fastlane
       def self.run(params)
         command = []
 
-        # command << "bundle exec" if params[:use_bundle_exec] && shell_out_should_use_bundle_exec?
+        command << "bundle exec" if params[:use_bundle_exec] && shell_out_should_use_bundle_exec?
 
         command << "pod spec lint"
-
-        # if params[:verbose]
-        #   command << "--verbose"
-        # end
-
-        command << "--verbose" if params[:verbose]
 
         if params[:sources]
           sources = params[:sources].join(",")
           command << "--sources='#{sources}'"
         end
-
-        # if params[:allow_warnings]
-        #   command << "--allow-warnings"
-        # end
-
-        command << "--allow-warnings" if params[:allow_warnings]
 
         if params[:subspec]
           subspec = params[:subspec]
@@ -34,7 +22,9 @@ module Fastlane
           swift_version = params[:swift_version]
           command << "--swift-version=#{swift_version}"
         end
-      
+
+        command << "--allow-warnings" if params[:allow_warnings]
+        command << "--verbose" if params[:verbose]
         command << "--quick" if params[:quick]
         command << "--use-libraries" if params[:use_libraries]
         command << "--fail-fast" if params[:fail_fast]
@@ -62,6 +52,10 @@ module Fastlane
 
       def self.available_options
         [
+          FastlaneCore::ConfigItem.new(key: :use_bundle_exec,
+                                       description: "Use bundle exec when there is a Gemfile presented",
+                                       is_string: false,
+                                       default_value: true),
           FastlaneCore::ConfigItem.new(key: :quick,
                                        description: "Lint skips checks that would require to download and build the spec",
                                        is_string: false,

@@ -26,7 +26,8 @@ platform :ios do
 
     git_pull # 拉取最新代码
     ensure_git_branch # 确保当前是 master 分支
-    pod_spec_lint(allow_warnings: true)
+    pod_lib_lint(allow_warnings: true)
+    # pod_spec_lint(allow_warnings: true)
     version_bump_podspec(path: path, version_number: version) # 修改 podspec 中版本
     git_add(path: ".")
     git_commit(message: "update version to #{version}")
