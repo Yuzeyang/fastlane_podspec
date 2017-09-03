@@ -91,7 +91,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "FastlanePodspecDemo/*.{h,m}"
+  s.source_files  = "FastlanePodspecDemo/FastlanePodspecDemo/*.{h,m}"
 
   # s.public_header_files = "Classes/**/*.h"
 
@@ -105,7 +105,7 @@ Pod::Spec.new do |s|
   #
 
   # s.resource  = "icon.png"
-  s.resources = "FastlanePodspecDemo/*.{plist,storyboard}"
+  s.resources = "FastlanePodspecDemo/FastlanePodspecDemo/*.{plist,storyboard}"
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
