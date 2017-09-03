@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "FastlanePodspecDemo"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "A short description of FastlanePodspecDemo."
 
   # This description is used to generate tags and improve search results.
@@ -80,7 +80,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/Yuzeyang/fastlane_podspec/tree/master/FastlanePodspecDemo", :tag => s.version.to_s }
+  s.source       = { :git => "https://github.com/Yuzeyang/fastlane_podspec.git", :tag => s.version.to_s }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
