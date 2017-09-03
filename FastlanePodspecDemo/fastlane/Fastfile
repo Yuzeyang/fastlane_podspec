@@ -26,14 +26,15 @@ platform :ios do
 
     git_pull # 拉取最新代码
     ensure_git_branch # 确保当前是 master 分支
-    cocoapods # pod install
-    pod_lib_lint(allow_warnings: true) # 检查 podspec 有效性
+    # cocoapods # pod install
+    # pod_lib_lint(allow_warnings: true) # 检查 podspec 有效性
     version_bump_podspec(path: path, version_number: version) # 修改 podspec 中版本
-    git_add # 添加修改的文件
+    # git_add(pathspec: "*") # 添加修改的文件
+    git_commit(path: ["*"], message: "update version to #{version}")
     push_to_git_remote # 提交本地改动到远程分支
     add_git_tag(tag: version) # 添加 tag
     push_git_tags # push 本地 tags
-    pod_push # push podspec 到仓库
+    pod_push(path: path, allow_warnings: true) # push podspec 到仓库
 
     puts("push success, current version is #{version}")
   end
