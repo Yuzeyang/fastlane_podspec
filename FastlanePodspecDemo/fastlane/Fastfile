@@ -26,10 +26,9 @@ platform :ios do
 
     git_pull # 拉取最新代码
     ensure_git_branch # 确保当前是 master 分支
-    # cocoapods # pod install
     # pod_lib_lint(allow_warnings: true) # 检查 podspec 有效性
+    pod_spec_lint(allow_warnings: true)
     version_bump_podspec(path: path, version_number: version) # 修改 podspec 中版本
-    # git_add(pathspec: "*") # 添加修改的文件
     git_commit(path: ["*"], message: "update version to #{version}")
     push_to_git_remote # 提交本地改动到远程分支
     add_git_tag(tag: version) # 添加 tag
@@ -41,10 +40,6 @@ platform :ios do
 
   error do |lane, exception|
     puts(exception.message);
-    # slack(
-    #   message: exception.message,
-    #   success: false
-    # )
   end
 end
 
